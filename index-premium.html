@@ -1,0 +1,294 @@
+
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rent a Car Galați</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#111;
+color:white;
+}
+
+header{
+position:fixed;
+width:100%;
+padding:25px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+z-index:1000;
+background:rgba(0,0,0,0.35);
+backdrop-filter:blur(8px);
+}
+
+.logo{
+font-size:24px;
+font-weight:bold;
+}
+
+nav a{
+text-decoration:none;
+color:white;
+margin-left:25px;
+transition:.3s;
+}
+
+nav a:hover{
+color:#ffb400;
+}
+
+.cta-btn{
+padding:12px 24px;
+background:#ffb400;
+border-radius:30px;
+color:black;
+font-weight:bold;
+text-decoration:none;
+}
+
+.hero{
+height:100vh;
+display:flex;
+align-items:center;
+padding:0 8%;
+background:
+linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.7)),
+url('https://images.unsplash.com/photo-1494976388531-d1058494cdd8?q=80&w=2000');
+background-size:cover;
+background-position:center;
+}
+
+.hero-content{
+max-width:650px;
+}
+
+.hero h1{
+font-size:65px;
+margin-bottom:20px;
+}
+
+.hero p{
+font-size:20px;
+line-height:1.6;
+margin-bottom:35px;
+color:#ddd;
+}
+
+.buttons a{
+margin-right:15px;
+}
+
+.secondary{
+background:transparent;
+border:2px solid white;
+color:white;
+}
+
+.section{
+padding:100px 8%;
+}
+
+.title{
+font-size:36px;
+margin-bottom:50px;
+}
+
+.features{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.feature{
+background:#1c1c1c;
+padding:30px;
+border-radius:15px;
+transition:.3s;
+}
+
+.feature:hover{
+transform:translateY(-10px);
+}
+
+.cars{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:30px;
+}
+
+.car{
+overflow:hidden;
+background:#1c1c1c;
+border-radius:15px;
+}
+
+.car img{
+width:100%;
+height:220px;
+object-fit:cover;
+}
+
+.car-content{
+padding:20px;
+}
+
+.price{
+font-size:22px;
+color:#ffb400;
+margin:15px 0;
+}
+
+.big-cta{
+background:#ffb400;
+color:black;
+padding:80px;
+border-radius:25px;
+text-align:center;
+}
+
+.big-cta h2{
+font-size:42px;
+margin-bottom:15px;
+}
+
+footer{
+padding:30px;
+text-align:center;
+background:black;
+color:#aaa;
+}
+
+@media(max-width:768px){
+.hero h1{
+font-size:42px;
+}
+nav{
+display:none;
+}
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="logo">RENT A CAR GALAȚI</div>
+
+<nav>
+<a href="#">Acasă</a>
+<a href="#">Flotă</a>
+<a href="#">Despre</a>
+<a href="#">Contact</a>
+<a href="#" class="cta-btn">Rezervă acum</a>
+</nav>
+</header>
+
+<section class="hero">
+<div class="hero-content">
+
+<h1>Închirieri auto rapide în Galați</h1>
+
+<p>
+Mașini curate, prețuri transparente și rezervări rapide.
+Adaugă ulterior textele, flota și detaliile companiei.
+</p>
+
+<div class="buttons">
+<a href="#" class="cta-btn">Vezi flota</a>
+<a href="#" class="cta-btn secondary">Contactează-ne</a>
+</div>
+
+</div>
+</section>
+
+<section class="section">
+<h2 class="title">De ce să ne alegi?</h2>
+
+<div class="features">
+
+<div class="feature">
+<h3>Predare rapidă</h3>
+<p>Livrare și preluare rapidă.</p>
+</div>
+
+<div class="feature">
+<h3>Asistență 24/7</h3>
+<p>Suport disponibil permanent.</p>
+</div>
+
+<div class="feature">
+<h3>Prețuri transparente</h3>
+<p>Fără costuri ascunse.</p>
+</div>
+
+<div class="feature">
+<h3>Flotă modernă</h3>
+<p>Mașini verificate și întreținute.</p>
+</div>
+
+</div>
+</section>
+
+<section class="section">
+<h2 class="title">Mașini populare</h2>
+
+<div class="cars">
+
+<div class="car">
+<img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?q=80&w=1200">
+<div class="car-content">
+<h3>Mercedes C Class</h3>
+<div class="price">€45 / zi</div>
+<a href="#" class="cta-btn">Detalii</a>
+</div>
+</div>
+
+<div class="car">
+<img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1200">
+<div class="car-content">
+<h3>BMW Seria 3</h3>
+<div class="price">€50 / zi</div>
+<a href="#" class="cta-btn">Detalii</a>
+</div>
+</div>
+
+<div class="car">
+<img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1200">
+<div class="car-content">
+<h3>Volkswagen Golf</h3>
+<div class="price">€35 / zi</div>
+<a href="#" class="cta-btn">Detalii</a>
+</div>
+</div>
+
+</div>
+</section>
+
+<section class="section">
+<div class="big-cta">
+
+<h2>Ai nevoie de o mașină astăzi?</h2>
+
+<p>Rezervă în mai puțin de 2 minute.</p>
+<br><br>
+
+<a href="#" class="cta-btn">Rezervă acum</a>
+
+</div>
+</section>
+
+<footer>
+Rent a Car Galați © 2026
+</footer>
+
+</body>
+</html>
