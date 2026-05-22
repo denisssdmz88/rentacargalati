@@ -3,181 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Termeni și Condiții - OPTIMUM PARTNERSHIP S.R.L.</title>
+    <title>Termeni și Condiții - OPTIMUM PARTNERSHIP</title>
+    <link rel="stylesheet" href="style.css"> 
     <style>
-        :root {
-            --primary-color: #1a365d;
-            --secondary-color: #2b6cb0;
-            --text-color: #2d3748;
-            --bg-light: #f7fafc;
-            --border-color: #e2e8f0;
-            --accent-color: #dd6b20;
+        /* Stiluri specifice pentru pagina de termeni, aliniate la designul site-ului auto */
+        .terms-section {
+            padding: 60px 0;
+            background-color: var(--bg-light, #f8f9fa);
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+        .terms-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: #ffffff;
-            padding-bottom: 60px;
-        }
-
-        /* Header complet */
-        header {
-            background-color: var(--primary-color);
-            color: #ffffff;
-            padding: 40px 20px;
-            text-align: center;
-            border-bottom: 5px solid var(--secondary-color);
-        }
-
-        header h1 {
-            font-size: 2rem;
+        .terms-wrapper h1 {
+            color: var(--primary-color, #111111);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
             font-weight: 700;
-            margin-bottom: 10px;
-            letter-spacing: -0.5px;
         }
 
-        header p {
-            color: #90cdf4;
-            font-size: 1rem;
-        }
-
-        /* Container Principal */
-        .container {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: 280px 1fr;
-            gap: 40px;
-        }
-
-        /* Caseta cu datele firmei */
-        .company-details {
-            background-color: var(--bg-light);
-            border: 1px solid var(--border-color);
-            border-left: 4px solid var(--secondary-color);
-            padding: 20px;
-            border-radius: 4px;
-            margin-bottom: 30px;
-        }
-
-        .company-details h3 {
-            color: var(--primary-color);
-            margin-bottom: 12px;
-            font-size: 1.1rem;
-        }
-
-        .company-details p {
-            font-size: 0.95rem;
-            margin-bottom: 8px;
-        }
-
-        .company-details strong {
-            color: #4a5568;
-        }
-
-        /* Navigație Laterală (Sticky) */
-        .sidebar {
-            position: sticky;
-            top: 20px;
-            height: fit-content;
-        }
-
-        .sidebar h4 {
+        .terms-meta {
+            color: #777777;
             font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #718096;
-            margin-bottom: 15px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--accent-color, #ffcc00); /* Culoarea de accent a site-ului tău (ex: galben/portocaliu) */
+            padding-bottom: 15px;
         }
 
-        .sidebar ul {
-            list-style: none;
+        .company-badge {
+            background-color: #f1f3f5;
+            border-left: 4px solid var(--accent-color, #ffcc00);
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 0 4px 4px 0;
         }
 
-        .sidebar li {
-            margin-bottom: 10px;
-        }
-
-        .sidebar a {
-            display: block;
-            color: var(--text-color);
-            text-decoration: none;
+        .company-badge p {
+            margin: 5px 0;
             font-size: 0.95rem;
-            transition: color 0.2s ease;
         }
 
-        .sidebar a:hover {
-            color: var(--secondary-color);
+        .terms-content h2 {
+            color: var(--primary-color, #111111);
+            font-size: 1.4rem;
+            margin-top: 30px;
+            margin-bottom: 15px;
             font-weight: 600;
         }
 
-        /* Conținutul Juridic */
-        .content {
-            background-color: #ffffff;
-        }
-
-        .content p {
-            margin-bottom: 18px;
+        .terms-content p, .terms-content li {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #444444;
             text-align: justify;
         }
 
-        .content h2 {
-            color: var(--primary-color);
-            font-size: 1.4rem;
-            margin: 35px 0 15px 0;
-            padding-bottom: 8px;
-            border-bottom: 1px solid var(--border-color);
-            scroll-margin-top: 20px; /* Previne acoperirea titlului la click pe link-uri */
-        }
-
-        .content h2:first-of-type {
-            margin-top: 0;
-        }
-
-        .content ul {
-            margin-bottom: 20px;
+        .terms-content ul {
             padding-left: 20px;
+            margin-bottom: 20px;
         }
 
-        .content li {
+        .terms-content li {
             margin-bottom: 8px;
-            text-align: justify;
         }
 
-        /* Notă importantă */
-        .note-box {
-            background-color: #fffaf0;
-            border: 1px solid #feebc8;
-            border-left: 4px solid var(--accent-color);
-            padding: 15px;
-            margin-top: 40px;
+        /* Buton de întoarcere stilat ca butoanele din restul site-ului */
+        .btn-back {
+            display: inline-block;
+            background-color: var(--primary-color, #111111);
+            color: #ffffff;
+            padding: 12px 25px;
             border-radius: 4px;
-            font-size: 0.95rem;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 40px;
+            transition: all 0.3s ease;
         }
 
-        /* Responsivitate pentru Tablete și Telefoane */
+        .btn-back:hover {
+            background-color: var(--accent-color, #ffcc00);
+            color: #111111;
+        }
+
         @media (max-width: 768px) {
-            .container {
-                grid-template-columns: 1fr;
-                gap: 20px;
-                margin: 20px auto;
+            .terms-wrapper {
+                padding: 20px;
+                margin: 0 15px;
             }
-
-            .sidebar {
-                display: none; /* Ascundem meniul lateral pe ecrane mici pentru simplitate */
-            }
-
-            header h1 {
-                font-size: 1.6rem;
+            .terms-wrapper h1 {
+                font-size: 1.8rem;
             }
         }
     </style>
@@ -185,77 +105,45 @@
 <body>
 
     <header>
-        <h1>Termeni și Condiții de Utilizare</h1>
-        <p>Ultima actualizare: Mai, 2026</p>
-    </header>
+        </header>
 
-    <div class="container">
-        
-        <aside class="sidebar">
-            <h4>Navigare rapidă</h4>
-            <ul>
-                <li><a href="#definitii">1. Definiții</a></li>
-                <li><a href="#proprietate">2. Proprietate Intelectuală</a></li>
-                <li><a href="#utilizare">3. Condiții de Utilizare</a></li>
-                <li><a href="#raspundere">4. Limitarea Răspunderii</a></li>
-                <li><a href="#gdpr">5. Confidențialitate (GDPR)</a></li>
-                <li><a href="#modificari">6. Modificări Termeni</a></li>
-                <li><a href="#litigii">7. Legea Aplicabilă</a></li>
-            </ul>
-        </aside>
+    <section class="terms-section">
+        <div class="terms-wrapper">
+            <h1>Termeni și Condiții</h1>
+            <div class="terms-meta">Ultima actualizare: Mai, 2026</div>
 
-        <main class="content">
-            
-            <div class="company-details">
-                <h3>Identificare Operator</h3>
-                <p><strong>Companie:</strong> OPTIMUM PARTNERSHIP S.R.L.</p>
-                <p><strong>Cod Unic de Înregistrare (CUI):</strong> RO43601888</p>
-                <p><strong>Nr. Reg. Comerțului:</strong> J2021000125175</p>
+            <div class="company-badge">
+                <p><strong>Operator platformă:</strong> OPTIMUM PARTNERSHIP S.R.L.</p>
+                <p><strong>Cod Unic de Înregistrare:</strong> RO43601888</p>
+                <p><strong>Reg. Comerțului:</strong> J2021000125175</p>
                 <p><strong>Sediu Social:</strong> Str. Navelor nr. 2, Galați, România</p>
             </div>
 
-            <p>Prezentul document stabilește termenii și condițiile în care puteți utiliza site-ul web și serviciile puse la dispoziție de către <strong>OPTIMUM PARTNERSHIP S.R.L.</strong> (numită în continuare „Societatea” sau „Prestatorul”). Utilizarea site-ului, navigarea pe paginile acestuia sau accesarea serviciilor implică acceptarea deplină și necondiționată a acestor Termeni și Condiții.</p>
+            <div class="terms-content">
+                <p>Prezentul document stabilește termenii și condițiile în care puteți utiliza site-ul web de închirieri auto și serviciile puse la dispoziție de către <strong>OPTIMUM PARTNERSHIP S.R.L.</strong>. Utilizarea site-ului, navigarea pe paginile acestuia sau efectuarea unei rezervări implică acceptarea deplină a acestor termeni.</p>
 
-            <h2 id="definitii">1. Definiții și Termeni Generali</h2>
-            <p>În cuprinsul prezentului document, următorii termeni vor fi interpretați astfel:</p>
-            <ul>
-                <li><strong>Utilizator</strong> – orice persoană fizică sau juridică care accesează, navighează sau utilizează site-ul în orice scop.</li>
-                <li><strong>Client</strong> – persoana fizică sau juridică care încheie un contract sau achiziționează servicii/produse prin intermediul platformei.</li>
-                <li><strong>Conținut</strong> – toate informațiile de pe site care pot fi vizitate, vizualizate sau altfel accesate prin utilizarea unui echipament electronic, incluzând texte, imagini, logo-uri, elemente grafice și cod software.</li>
-            </ul>
+                <h2>1. Condiții Generale de Închiriere</h2>
+                <p>Pentru a efectua o rezervare validă prin intermediul platformei noastre, utilizatorul trebuie să îndeplinească condițiile legale de vârstă și deținere a unui permis de conducere valid (specificat în contractul final de închiriere). Datele introduse în formularul de booking trebuie să fie reale și corecte.</p>
 
-            <h2 id="proprietate">2. Drepturile de Proprietate Intelectuală</h2>
-            <p>Întregul conținut al acestui site (texte, scripturi, grafică web, imagini, baze de date) este proprietatea exclusivă a <strong>OPTIMUM PARTNERSHIP S.R.L.</strong> și este protejat de legislația română și internațională privind drepturile de autor și proprietatea intelectuală.</p>
-            <p>Este strict interzisă copierea, modificarea, reproducerea, republicarea sau distribuirea parțială sau totală a conținutului fără acordul prealabil, scris, al Societății.</p>
+                <h2>2. Proprietatea Intelectuală</h2>
+                <p>Întregul conținut al acestui site (texte, imagini cu mașinile din flotă, elemente grafice, logo-uri și structura bazei de date) este proprietatea exclusivă a OPTIMUM PARTNERSHIP S.R.L. și este protejat de legea drepturilor de autor. Copierea sau utilizarea neautorizată a acestora este strict interzisă.</p>
 
-            <h2 id="utilizare">3. Condiții de Utilizare a Site-ului</h2>
-            <p>Utilizatorul se obligă să acceseze și să folosească site-ul exclusiv în scopuri legitime și să nu aducă prejudicii de orice natură platformei sau imaginii OPTIMUM PARTNERSHIP S.R.L. Sunt interzise în mod expres:</p>
-            <ul>
-                <li>Introducerea de viruși, malware sau orice alt tip de cod dăunător sau distructiv tehnic;</li>
-                <li>Utilizarea sistemelor automate (roboti, spideri, scraperi) pentru a extrage date fără o permisiune scrisă;</li>
-                <li>Încercarea de a obține acces neautorizat la serverele site-ului sau la conturile altor utilizatori.</li>
-            </ul>
+                <h2>3. Utilizarea Formularului de Rezervare (Booking)</h2>
+                <p>Prin trimiterea unei cereri de rezervare, utilizatorul este de acord să fie contactat pentru confirmarea disponibilității autoturismului ales și finalizarea detaliilor comerciale. Compania își rezervă dreptul de a refuza anumite rezervări în funcție de indisponibilitatea flotei sau neîndeplinirea criteriilor interne de siguranță.</p>
 
-            <h2 id="raspundere">4. Limitarea Răspunderii</h2>
-            <p>Societatea nu garantează că site-ul va funcționa neîntrerupt, fără erori sau că este complet liber de defecte temporare. Prestatorul depune toate eforturile rezonabile pentru a menține acuratețea și securitatea informațiilor, însă nu își asumă răspunderea pentru erori omisive sau modificări tehnice independente de voința sa.</p>
-            <p>În niciun caz, OPTIMUM PARTNERSHIP S.R.L. nu va fi responsabilă pentru daune directe sau indirecte ce rezultă din utilizarea sau imposibilitatea de utilizare a site-ului.</p>
+                <h2>4. Prelucrarea Datelor (GDPR)</h2>
+                <p>Datele colectate prin intermediul formularului de rezervare sunt prelucrate în scopul exclusiv de a genera ofertele și contractele de închiriere auto, în deplină conformitate cu Regulamentul European GDPR. Informațiile nu vor fi înstrăinate către terți.</p>
 
-            <h2 id="gdpr">5. Politica de Confidențialitate (GDPR)</h2>
-            <p>Societatea colectează și prelucrează date cu caracter personal în conformitate cu Regulamentul European 2016/679 (GDPR). Detaliile complete privind modalitatea de colectare, scopurile prelucrării și drepturile dumneavoastră pot fi consultate în secțiunea dedicată <em>Politicii de Confidențialitate</em> disponibilă pe site.</p>
-
-            <h2 id="modificari">6. Modificări ale Prezentului Acord</h2>
-            <p>OPTIMUM PARTNERSHIP S.R.L. își rezervă dreptul de a actualiza sau modifica acești Termeni și Condiții în mod periodic, fără o notificare prealabilă a utilizatorilor. Varianta actualizată va fi aplicabilă din momentul publicării ei pe site. Este responsabilitatea utilizatorului să verifice periodic conținutul acestei pagini.</p>
-
-            <h2 id="litigii">7. Litigii și Legea Aplicabilă</h2>
-            <p>Drepturile și obligațiile părților menționate în acest document sunt guvernate de legea română. Orice dispută sau litigiu apărut în legătură cu interpretarea, executarea sau aplicarea acestor Termeni și Condiții va fi soluționat pe cale amiabilă.</p>
-            <p>În cazul în care rezolvarea amiabilă nu este posibilă, competența de judecată revine instanțelor judecătorești române competente din raza sediului social al societății.</p>
-
-            <div class="note-box">
-                <strong>Notă legală:</strong> Prezentul text constituie un cadru general standard de utilizare a platformei web. În funcție de specificul activității comerciale exacte a OPTIMUM PARTNERSHIP S.R.L. (e-commerce, prestări servicii directe, consultanță etc.), este recomandată revizuirea periodică sau adaptarea clauzelor specifice.
+                <h2>5. Litigii și Legea Aplicabilă</h2>
+                <p>Orice dispută născută în legătură cu utilizarea acestui site va fi soluționată pe cale amiabilă. În caz contrar, competența revine instanțelor de judecată din raza sediului social al societății (Galați).</p>
             </div>
 
-        </main>
-    </div>
+            <a href="booking.html" class="btn-back">Înapoi la Rezervare</a>
+        </div>
+    </section>
+
+    <footer>
+        </footer>
 
 </body>
 </html>
