@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Rezervare - Optimum Partnership | Închirieri Auto Galați</title>
+<title>Rezervare - Rent a Car Galați</title>
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,11 +41,6 @@ header{
 .logo{
     font-size: 24px;
     font-weight: bold;
-    letter-spacing: 0.5px;
-}
-
-.logo span {
-    color: #ffb400;
 }
 
 .logo a {
@@ -149,7 +144,7 @@ nav a:hover{
     margin-bottom: 8px;
 }
 
-input[type="text"], input[type="email"], textarea, select {
+input[type="text"], input[type="email"], textarea {
     width: 100%;
     padding: 16px;
     background: #252525;
@@ -160,7 +155,7 @@ input[type="text"], input[type="email"], textarea, select {
     transition: .3s;
 }
 
-input:focus, textarea:focus, select:focus {
+input:focus, textarea:focus {
     outline: none;
     border-color: #ffb400;
     background: #2a2a2a;
@@ -211,7 +206,7 @@ input[readonly] {
     text-align: center;
 }
 
-/* Tab-uri Persoana Fizica / Juridica */
+/* Tab-uri */
 .tabs-container {
     display: flex;
     gap: 10px;
@@ -242,6 +237,168 @@ input[readonly] {
 
 .tab-panel.active {
     display: block;
+}
+
+/* --- DESIGN CONTAINERE PLATA --- */
+.payment-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 25px 0;
+}
+
+.payment-card {
+    background: #222;
+    border: 2px solid #333;
+    border-radius: 16px;
+    padding: 25px;
+    cursor: pointer;
+    position: relative;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.payment-card:hover {
+    border-color: #ffb400;
+}
+
+.payment-card.active {
+    border-color: #ffb400;
+    background: rgba(255, 180, 0, 0.03);
+}
+
+.payment-card.online.active {
+    border-color: #24b545;
+    background: rgba(36, 181, 69, 0.03);
+}
+
+.payment-card h4 {
+    font-size: 18px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.payment-card p {
+    font-size: 13px;
+    color: #aaa;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.payment-card .benefits {
+    list-style: none;
+    font-size: 13px;
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+.payment-card .benefits li {
+    margin-bottom: 6px;
+}
+
+.payment-card .price-display {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: right;
+    margin-top: auto;
+}
+
+.payment-card.online .price-display {
+    color: #24b545;
+}
+
+.payment-card.pay-later .price-display {
+    color: #ffb400;
+}
+
+.radio-dot {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #555;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.payment-card.active .radio-dot {
+    border-color: #ffb400;
+}
+
+.payment-card.online.active .radio-dot {
+    border-color: #24b545;
+}
+
+.payment-card.active .radio-dot::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background: #ffb400;
+    border-radius: 50%;
+}
+
+.payment-card.online.active .radio-dot::after {
+    background: #24b545;
+}
+
+/* Sumar de Pret Dedicat */
+.price-summary-box {
+    background: #151515;
+    border: 1px solid #252525;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #aaa;
+    margin-bottom: 8px;
+}
+
+.summary-row.total-row {
+    border-top: 1px dashed #333;
+    padding-top: 12px;
+    margin-top: 12px;
+    font-size: 18px;
+    color: white;
+    font-weight: bold;
+}
+
+/* --- ECRAN DE SUCCES INTEGRAT --- */
+#success-screen {
+    display: none;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.success-icon {
+    font-size: 60px;
+    color: #24b545;
+    margin-bottom: 20px;
+}
+
+.success-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.success-message {
+    color: #ccc;
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 550px;
+    margin: 0 auto 30px auto;
 }
 
 /* Modal-ul de masini */
@@ -325,44 +482,12 @@ input[readonly] {
 }
 
 footer{
-    padding:60px 8% 40px 8%;
-    background:black;
-    color:#aaa;
-    font-size:14px;
-    border-top:1px solid #111;
-    margin-top: 40px;
-}
-
-.footer-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 40px;
-    text-align: left;
-    max-width: 1400px;
-    margin: 0 auto 40px auto;
-}
-
-.footer-section h4 {
-    color: white;
-    margin-bottom: 15px;
-    font-size: 16px;
-}
-
-.footer-section p {
-    margin-bottom: 8px;
-    line-height: 1.6;
-}
-
-.footer-section a {
-    color: #ffb400;
-    text-decoration: none;
-}
-
-.footer-bottom {
+    padding: 40px;
     text-align: center;
-    padding-top: 30px;
-    border-top: 1px solid #222;
-    color: #666;
+    background: black;
+    color: #aaa;
+    border-top: 1px solid #111;
+    margin-top: 40px;
 }
 
 @media(max-width:768px){
@@ -372,15 +497,11 @@ footer{
     nav{
         display: none;
     }
-    .row {
+    .row, .payment-grid {
         grid-template-columns: 1fr;
     }
     .card {
         padding: 20px;
-    }
-    .footer-content {
-        grid-template-columns: 1fr;
-        text-align: center;
     }
 }
 </style>
@@ -388,7 +509,7 @@ footer{
 <body>
 
 <header>
-<div class="logo"><a href="index.html">OPTIMUM <span>PARTNERSHIP</span></a></div>
+<div class="logo"><a href="index.html">RENT A CAR GALAȚI</a></div>
 <nav>
 <a href="index.html">Acasă</a>
 <a href="#">Flotă</a>
@@ -514,12 +635,50 @@ footer{
                     </div>
                 </div>
 
-                <div class="form-group-booking" style="margin-top: 20px;">
-                    <label for="payment-method">Modalitate de plată *</label>
-                    <select id="payment-method" required>
-                        <option value="la_preluare">Plată la preluare (Numerar / Card la sediu)</option>
-                        <option value="online">Plată online cu cardul</option>
-                    </select>
+                <div class="price-summary-box">
+                    <div class="summary-row">
+                        <span>Perioadă închiriere:</span>
+                        <span id="summary-days">0 zile</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Preț bază pe zi:</span>
+                        <span id="summary-base-rate">0 €</span>
+                    </div>
+                    <div class="summary-row total-row">
+                        <span>Preț Total:</span>
+                        <span id="summary-total-value">0 €</span>
+                    </div>
+                </div>
+
+                <label style="font-size: 14px; color: #aaa;">Modalitate de plată *</label>
+                <div class="payment-grid">
+                    
+                    <div class="payment-card pay-later active" onclick="selectPaymentMethod('la_preluare')">
+                        <div class="radio-dot"></div>
+                        <div>
+                            <h4>Plătește la preluare</h4>
+                            <p>Plătești direct la sediul nostru când ridici mașina.</p>
+                            <ul class="benefits">
+                                <li>✓ Cash sau Card bancar</li>
+                                <li>✓ Anulare gratuită oricând</li>
+                            </ul>
+                        </div>
+                        <div class="price-display" id="card-price-later">0 EUR</div>
+                    </div>
+
+                    <div class="payment-card online" onclick="selectPaymentMethod('online')">
+                        <div class="radio-dot"></div>
+                        <div>
+                            <h4>Plătește acum online</h4>
+                            <p>Plătești securizat acum și ai confirmarea instantanee.</p>
+                            <ul class="benefits">
+                                <li>✓ Securizat prin link de plată</li>
+                                <li>✓ Procesare imediată</li>
+                            </ul>
+                        </div>
+                        <div class="price-display" id="card-price-online">0 EUR</div>
+                    </div>
+
                 </div>
 
                 <label class="checkbox-container">
@@ -537,8 +696,15 @@ footer{
                     <span>Sunt de acord să primesc materiale promoționale și oferte speciale (Opțional)</span>
                 </label>
 
-                <button type="submit" class="cta-btn" style="width: 100%; margin-top: 25px; padding: 16px; font-size: 18px;">Continuă spre Finalizare / Plată</button>
+                <button type="submit" id="submit-booking-btn" class="cta-btn" style="width: 100%; margin-top: 25px; padding: 16px; font-size: 18px;">Finalizare rezervare</button>
             </form>
+        </div>
+
+        <div id="success-screen">
+            <div class="success-icon">✓</div>
+            <div class="success-title" id="success-title">Rezervare procesată!</div>
+            <div class="success-message" id="success-message"></div>
+            <a href="index.html" class="cta-btn">Înapoi la pagina principală</a>
         </div>
 
     </div>
@@ -557,7 +723,7 @@ footer{
                 <h3>Peugeot 308</h3>
                 <div class="car-meta">🕹️ Manuală (6+1) | ⛽ 1.6 HDI</div>
                 <p class="car-price">35€ <span>/ zi</span></p>
-                <button class="cta-btn" style="width: 100%; padding: 12px;" onclick="selectCar('Peugeot 308')">Selectează</button>
+                <button class="cta-btn" style="width: 100%; padding: 12px;" onclick="selectCar('Peugeot 308', 35)">Selectează</button>
             </div>
         </div>
         
@@ -567,7 +733,7 @@ footer{
                 <h3>Skoda Rapid</h3>
                 <div class="car-meta">🕹️ Manuală (5+1) | ⛽ 1.6 TDI</div>
                 <p class="car-price">40€ <span>/ zi</span></p>
-                <button class="cta-btn" style="width: 100%; padding: 12px;" onclick="selectCar('Skoda Rapid')">Selectează</button>
+                <button class="cta-btn" style="width: 100%; padding: 12px;" onclick="selectCar('Skoda Rapid', 40)">Selectează</button>
             </div>
         </div>
 
@@ -577,7 +743,7 @@ footer{
                 <h3>Opel Astra</h3>
                 <div class="car-meta">🕹️ Manuală (6+1) | ⛽ 1.5 CDTI</div>
                 <p class="car-price">45€ <span>/ zi</span></p>
-                <button class="cta-btn" style="width: 100%; padding: 12px;" onclick="selectCar('Opel Astra')">Selectează</button>
+                <button class="cta-btn" style="width: 100%; padding: 12px;" onclick="selectCar('Opel Astra', 45)">Selectează</button>
             </div>
         </div>
 
@@ -585,26 +751,7 @@ footer{
 </div>
 
 <footer>
-<div class="footer-content">
-<div class="footer-section">
-<h4>Optimum Partnership</h4>
-<p>Servicii premium de închirieri auto în Galați. Flexibilitate, corectitudine și mașini adaptate nevoilor tale.</p>
-</div>
-<div class="footer-section">
-<h4>Informații Legale</h4>
-<p><b>CUI:</b> RO43601888</p>
-<p><b>Reg. Com:</b> J2021000125175</p>
-<p><b>Sediu:</b> Str. Navelor nr. 2, Galați</p>
-</div>
-<div class="footer-section">
-<h4>Contact Direct</h4>
-<p><b>Telefon:</b> <a href="tel:+40744700230">0744 700 230</a></p>
-<p><b>Email:</b> <a href="mailto:optimumhoreca@yahoo.com">optimumhoreca@yahoo.com</a></p>
-</div>
-</div>
-<div class="footer-bottom">
-Optimum Partnership © 2026. Toate drepturile rezervate.
-</div>
+    Rent a Car Galați © 2026
 </footer>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -612,24 +759,61 @@ Optimum Partnership © 2026. Toate drepturile rezervate.
 <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/confirmDate/confirmDate.js"></script>
 
 <script>
-let selectedCarGlobal = "";
-let currentProfileType = "pf";
+let selectedCarName = "";
+let selectedCarPricePerDay = 0;
+let totalDaysCalculated = 1;
+let activePaymentMethod = "la_preluare";
 
-// Initializare Flatpickr pentru date
-flatpickr("#pickup",{enableTime:true,time_24hr:true,dateFormat:"d.m.Y H:i",
-plugins:[new confirmDatePlugin({confirmText:"Confirmă"})]});
+let pickupInstance = flatpickr("#pickup",{
+    enableTime:true,
+    time_24hr:true,
+    dateFormat:"d.m.Y H:i",
+    onChange: calculateDays,
+    plugins:[new confirmDatePlugin({confirmText:"Confirmă"})]
+});
 
-flatpickr("#dropoff",{enableTime:true,time_24hr:true,dateFormat:"d.m.Y H:i",
-plugins:[new confirmDatePlugin({confirmText:"Confirmă"})]});
+let dropoffInstance = flatpickr("#dropoff",{
+    enableTime:true,
+    time_24hr:true,
+    dateFormat:"d.m.Y H:i",
+    onChange: calculateDays,
+    plugins:[new confirmDatePlugin({confirmText:"Confirmă"})]
+});
 
-// Initializare harta fixata pe sediu
 let map = L.map('map', {
     center: [45.4340, 28.0560],
     zoom: 15,
     zoomControl: false
 });
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
-L.marker([45.4340, 28.0560]).addTo(map).bindPopup('<b>Optimum Partnership</b>').openPopup();
+L.marker([45.4340, 28.0560]).addTo(map).bindPopup('<b>Sediul Nostru Fix</b>').openPopup();
+
+function calculateDays() {
+    const pickupDate = pickupInstance.latestSelectedDateObj;
+    const dropoffDate = dropoffInstance.latestSelectedDateObj;
+    
+    if (pickupDate && dropoffDate) {
+        const timeDiff = dropoffDate.getTime() - pickupDate.getTime();
+        if (timeDiff > 0) {
+            let days = Math.ceil(timeDiff / (1000 * 3600 * 24));
+            totalDaysCalculated = days;
+            updatePricingInterface();
+        } else {
+            totalDaysCalculated = 0;
+        }
+    }
+}
+
+function updatePricingInterface() {
+    let totalPrice = totalDaysCalculated * selectedCarPricePerDay;
+    
+    document.getElementById('summary-days').innerText = totalDaysCalculated + " zile";
+    document.getElementById('summary-base-rate').innerText = selectedCarPricePerDay + " €";
+    document.getElementById('summary-total-value').innerText = totalPrice + " €";
+    
+    document.getElementById('card-price-later').innerText = totalPrice + " EUR";
+    document.getElementById('card-price-online').innerText = totalPrice + " EUR";
+}
 
 function openModal(){
     const pickup = document.getElementById('pickup');
@@ -637,7 +821,7 @@ function openModal(){
     const license = document.getElementById('license');
 
     if(!pickup.value || !dropoff.value || !license.checked){
-        alert("Te rugăm să completezi datele de preluare/predare și să bifezi vechimea permisului.");
+        alert("Te rugăm să alegi data preluării, predării și să bifezi vechimea permisului.");
         return;
     }
     document.getElementById('modal').style.display="block";
@@ -647,30 +831,26 @@ function closeModal(){
     document.getElementById('modal').style.display="none";
 }
 
-// Cand selecteaza masina, inchidem modalul si activam Pasul 2 (Formularul)
-function selectCar(carName) {
-    selectedCarGlobal = carName;
+function selectCar(carName, pricePerDay) {
+    selectedCarName = carName;
+    selectedCarPricePerDay = pricePerDay;
+    
     document.getElementById('selected-car-badge').innerText = "Autoturism selectat: " + carName;
+    calculateDays();
     closeModal();
     
-    // Ascundem elementele initiale si afisam formularul de checkout
-    document.getElementById('map').style.display = "none";
+    document.getElementById('step-1-fields').style.display = "none";
     document.getElementById('checkout-section').style.display = "block";
-    
-    // Scroll lin catre formular
     document.getElementById('checkout-section').scrollIntoView({ behavior: 'smooth' });
 }
 
-// Schimbarea intre PF si PJ
 function switchTab(type) {
-    currentProfileType = type;
     document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
     document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
     
     if(type === 'pf') {
         document.querySelectorAll('.tab-btn')[0].classList.add('active');
         document.getElementById('panel-pf').classList.add('active');
-        // Punem câmpurile obligatorii la PF și scoatem de la PJ
         toggleRequiredFields('pf', true);
         toggleRequiredFields('pj', false);
     } else {
@@ -699,16 +879,43 @@ function toggleRequiredFields(type, isRequired) {
     }
 }
 
-// Trimiterea finala
+// Schimbarea cardului selectat de plata + text dinamic pe buton
+function selectPaymentMethod(method) {
+    activePaymentMethod = method;
+    document.querySelectorAll('.payment-card').forEach(card => card.classList.remove('active'));
+    
+    const btn = document.getElementById('submit-booking-btn');
+    
+    if (method === 'la_preluare') {
+        document.querySelector('.payment-card.pay-later').classList.add('active');
+        btn.innerText = "Finalizare rezervare";
+    } else {
+        document.querySelector('.payment-card.online').classList.add('active');
+        btn.innerText = "Spre plată";
+    }
+}
+
+// Finalizarea si inregistrarea direct pe ecran
 function handleFinalSubmit(event) {
     event.preventDefault();
-    const payment = document.getElementById('payment-method').value;
     
-    if(payment === 'online') {
-        alert('Redirecționare către procesatorul de plăți securizate pentru rezervarea mașinii ' + selectedCarGlobal + '...');
+    // Ascundem intreg formularul de checkout
+    document.getElementById('checkout-section').style.display = "none";
+    
+    const successTitle = document.getElementById('success-title');
+    const successMessage = document.getElementById('success-message');
+    
+    let totalFin = totalDaysCalculated * selectedCarPricePerDay;
+    
+    if (activePaymentMethod === 'online') {
+        successTitle.innerText = "Redirecționare plată...";
+        successMessage.innerHTML = "Înregistrarea ta pentru modelul <b>" + selectedCarName + "</b> a fost salvată cu succes. Te redirecționăm securizat către procesatorul de plăți electronice pentru suma de <b>" + totalFin + " €</b>. Te rugăm să nu închizi această fereastră.";
     } else {
-        alert('Rezervarea pentru ' + selectedCarGlobal + ' a fost trimisă cu succes! Plata se va efectua cash sau card direct la sediu (Strada Navelor nr. 2). Vă așteptăm!');
+        successTitle.innerText = "Rezervare salvată cu succes!";
+        successMessage.innerHTML = "Solicitarea ta de închiriere pentru <b>" + selectedCarName + "</b> a fost înregistrată. Detaliile au fost trimise pe adresa ta de e-mail. Plata în valoare de <b>" + totalFin + " €</b> se va efectua direct la preluarea mașinii din locația fixă stabilă (Strada Navelor nr. 2). Vă mulțumim!";
     }
+    
+    document.getElementById('success-screen').style.display = "block";
 }
 </script>
 
