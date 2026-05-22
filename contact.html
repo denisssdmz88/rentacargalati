@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact - Rent a Car Galați</title>
+<title>Contact - Optimum Partnership | Închirieri Auto Galați</title>
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,6 +40,11 @@ header{
 .logo{
     font-size: 24px;
     font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.logo span {
+    color: #ffb400;
 }
 
 .logo a {
@@ -75,6 +80,17 @@ nav a:hover{
 .cta-btn:hover {
     background: #e09e00;
     transform: translateY(-2px);
+}
+
+.cta-btn.secondary {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+}
+
+.cta-btn.secondary:hover {
+    background: white;
+    color: black;
 }
 
 /* Hero Section */
@@ -156,6 +172,16 @@ nav a:hover{
     margin-top: 4px;
 }
 
+.info-text a {
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.info-text a:hover {
+    color: #ffb400;
+}
+
 #contact-map {
     height: 280px;
     border-radius: 20px;
@@ -219,12 +245,44 @@ textarea {
 }
 
 footer{
-    padding: 40px;
-    text-align: center;
-    background: black;
-    color: #aaa;
-    border-top: 1px solid #111;
+    padding:60px 8% 40px 8%;
+    background:black;
+    color:#aaa;
+    font-size:14px;
+    border-top:1px solid #111;
     margin-top: 40px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    text-align: left;
+    max-width: 1400px;
+    margin: 0 auto 40px auto;
+}
+
+.footer-section h4 {
+    color: white;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.footer-section p {
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+
+.footer-section a {
+    color: #ffb400;
+    text-decoration: none;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid #222;
+    color: #666;
 }
 
 /* Responsive */
@@ -245,13 +303,17 @@ footer{
     .contact-form-container {
         padding: 30px;
     }
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
 }
 </style>
 </head>
 <body>
 
 <header>
-<div class="logo"><a href="index.html">RENT A CAR GALAȚI</a></div>
+<div class="logo"><a href="index.html">OPTIMUM <span>PARTNERSHIP</span></a></div>
 <nav>
 <a href="index.html">Acasă</a>
 <a href="#">Flotă</a>
@@ -267,7 +329,6 @@ footer{
 
 <main class="contact-container">
     
-    <!-- INFO & MAPA -->
     <section class="contact-info">
         <div class="info-card">
             
@@ -275,7 +336,7 @@ footer{
                 <div class="info-icon">📞</div>
                 <div class="info-text">
                     <h3>Telefon</h3>
-                    <p>+40 722 000 000</p>
+                    <p><a href="tel:+40744700230">0744 700 230</a></p>
                 </div>
             </div>
 
@@ -283,7 +344,7 @@ footer{
                 <div class="info-icon">✉️</div>
                 <div class="info-text">
                     <h3>Email</h3>
-                    <p>office@rentacargalati.ro</p>
+                    <p><a href="mailto:optimumhoreca@yahoo.com">optimumhoreca@yahoo.com</a></p>
                 </div>
             </div>
 
@@ -291,20 +352,18 @@ footer{
                 <div class="info-icon">📍</div>
                 <div class="info-text">
                     <h3>Locație</h3>
-                    <p>Strada Brăilei nr. 100, Galați</p>
+                    <p>Str. Navelor nr. 2, Galați</p>
                 </div>
             </div>
 
         </div>
 
-        <!-- Harta Leaflet integrata -->
         <div id="contact-map"></div>
     </section>
 
-    <!-- FORMULAR DE CONTACT -->
     <section class="contact-form-container">
         <h2>Trimite-ne un mesaj</h2>
-        <p>Ai întrebări legate de flote sau condiții de închiriere? Scrie-ne și îți răspundem în cel mai scurt timp.</p>
+        <p>Ai întrebări legate de flotă sau condiții de închiriere? Scrie-ne și îți răspundem în cel mai scurt timp.</p>
         
         <form onsubmit="handleSubmit(event)">
             <div class="form-group">
@@ -329,24 +388,43 @@ footer{
 </main>
 
 <footer>
-    Rent a Car Galați © 2026
+<div class="footer-content">
+<div class="footer-section">
+<h4>Optimum Partnership</h4>
+<p>Servicii premium de închirieri auto în Galați. Flexibilitate, corectitudine și mașini adaptate nevoilor tale.</p>
+</div>
+<div class="footer-section">
+<h4>Informații Legale</h4>
+<p><b>CUI:</b> RO43601888</p>
+<p><b>Reg. Com:</b> J2021000125175</p>
+<p><b>Sediu:</b> Str. Navelor nr. 2, Galați</p>
+</div>
+<div class="footer-section">
+<h4>Contact Direct</h4>
+<p><b>Telefon:</b> <a href="tel:+40744700230">0744 700 230</a></p>
+<p><b>Email:</b> <a href="mailto:optimumhoreca@yahoo.com">optimumhoreca@yahoo.com</a></p>
+</div>
+</div>
+<div class="footer-bottom">
+Optimum Partnership © 2026. Toate drepturile rezervate.
+</div>
 </footer>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-// Initializare harta fixata pe aceeasi locatie din Galati
+// Initializare harta fixata pe Strada Navelor, Galati [45.4340, 28.0560]
 let map = L.map('contact-map', {
-    center: [45.4353, 28.0079],
-    zoom: 14,
-    zoomControl: false // design mai curat fara butoanele de +/- implicite
+    center: [45.4340, 28.0560],
+    zoom: 15,
+    zoomControl: false
 });
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
 // Adaugare marker pe locatie
-L.marker([45.4353, 28.0079])
+L.marker([45.4340, 28.0560])
  .addTo(map)
- .bindPopup('<b>Rent a Car Galați</b><br>Te așteptăm la sediu!')
+ .bindPopup('<b>Optimum Partnership</b><br>Str. Navelor nr. 2, Galați')
  .openPopup();
 
 function handleSubmit(event) {
