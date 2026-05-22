@@ -808,16 +808,15 @@ let selectedCarPricePerDay = 0;
 let currentProfileType = "pf";
 let selectedPaymentType = "la_preluare";
 
-// Inițializare Flatpickr cu protecții complete împotriva datelor din trecut
+
 const pickupPicker = flatpickr("#pickup", {
     enableTime: true,
     dateFormat: "d.m.Y H:i",
     time_24hr: true,
     minDate: "today",
     locale: "ro",
-    plugins: [new confirmDatePlugin({confirmText: "Confirmă", showConfirmButton: true})],
     onChange: function(selectedDates, dateStr, instance) {
-        if(selectedDates.length > 0) {
+        if (selectedDates[0]) {
             dropoffPicker.set("minDate", selectedDates[0]);
         }
         calculateDynamicPrice();
@@ -830,7 +829,6 @@ const dropoffPicker = flatpickr("#dropoff", {
     time_24hr: true,
     minDate: "today",
     locale: "ro",
-    plugins: [new confirmDatePlugin({confirmText: "Confirmă", showConfirmButton: true})],
     onChange: function() {
         calculateDynamicPrice();
     }
@@ -904,31 +902,51 @@ function calculateDynamicPrice() {
 }
 
 function switchTab(type) {
-    currentProfileType = type;
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    currentProfileType = type; // Actualizează tipul curent (pf / pj)
 
-    if(type === 'pf') {
-        document.getElementById('tab-pf').classList.add('active');
-        document.getElementById('panel-pf').classList.add('active');
-        toggleRequiredFields('pf', true);
-        toggleRequiredFields('pj', false);
+    // Elimină clasa active de pe toate butoanele de tab și adaug-o pe cel selectat
+    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    if (type === 'pf') {
+        document.querySelector("button[onclick=\"switchTab('pf')\"]").classList.add('active');
     } else {
-        document.getElementById('tab-pj').classList.add('active');
-        document.getElementById('panel-pj').classList.add('active');
-        toggleRequiredFields('pf', false);
-        toggleRequiredFields('pj', true);
+        document.querySelector("button[onclick=\"switchTab('pj')\"]").classList.add('active');
     }
+
+    // Ascunde ambele panouri și afișează-lo doar pe cel selectat
+    document.getElementById('panel-pf').style.display = 'none';
+    document.getElementById('panel-pj').style.display = 'none';
+    
+    document.getElementById('panel-' + type).style.display = 'block';
+
+    // Apelează funcția de validare/required în funcție de tab-ul ales
+    toggleRequiredFields(type, true);
+}
 }
 
 function toggleRequiredFields(type, isRequired) {
-    if(type === 'pf') {
+    if (type === 'pf') {
         document.getElementById('pf-nume').required = isRequired;
         document.getElementById('pf-prenume').required = isRequired;
         document.getElementById('pf-cnp').required = isRequired;
         document.getElementById('pf-telefon').required = isRequired;
         document.getElementById('pf-email').required = isRequired;
+
+        // Dezactivează obligativitatea la PJ
+        document.getElementById('pj-firma').required = false;
+        document.getElementById('pj-cui').required = false;
+        document.getElementById('pj-reg').required = false;
+        document.getElementById('pj-contact').required = false;
+        document.getElementById('pj-adresa').required = false;
+        document.getElementById('pj-telefon').required = false;
+        document.getElementById('pj-email').required = false;
     } else {
+        document.getElementById('pf-nume').required = false;
+        document.getElementById('pf-prenume').required = false;
+        document.getElementById('pf-cnp').required = false;
+        document.getElementById('pf-telefon').required = false;
+        document.getElementById('pf-email').required = false;
+
+        // Activează obligativitatea la PJ
         document.getElementById('pj-firma').required = isRequired;
         document.getElementById('pj-cui').required = isRequired;
         document.getElementById('pj-reg').required = isRequired;
@@ -937,6 +955,7 @@ function toggleRequiredFields(type, isRequired) {
         document.getElementById('pj-telefon').required = isRequired;
         document.getElementById('pj-email').required = isRequired;
     }
+}
 }
 
 function selectPaymentMethod(method) {
