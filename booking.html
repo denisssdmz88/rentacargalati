@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ro">
 <head>
 <meta charset="utf-8">
@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/dark.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/confirmDate/confirmDate.css">
 
@@ -106,7 +107,7 @@ nav a:hover{
 
 .container{
     padding: 60px 8%;
-    max-width: 900px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
@@ -239,4 +240,472 @@ input[readonly] {
     display: block;
 }
 
-/* --- DESIGN CONTAINERE PLATA --- */
+/* Layout Secțiune Plată (Inspirat din screenshot-ul tău) */
+.payment-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 25px;
+    align-items: start;
+    margin-top: 20px;
+}
+
+.payment-options {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.pay-card {
+    background: #fff;
+    color: #111;
+    border-radius: 16px;
+    padding: 30px;
+    position: relative;
+    cursor: pointer;
+    border: 3px solid transparent;
+    transition: 0.3s;
+}
+
+.pay-card.online {
+    background: #0000b3;
+    color: #fff;
+}
+
+.pay-card.selected {
+    border-color: #ffb400;
+}
+
+.badge-save {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #00b341;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 6px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.pay-card.online .card-body {
+    margin-top: 15px;
+}
+
+.card-title-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.card-title-area h3 {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.pay-card.offline h3 { color: #0000b3; }
+
+.radio-circle {
+    width: 22px;
+    height: 22px;
+    border: 2px solid #aaa;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pay-card.selected .radio-circle {
+    border-color: #ffb400;
+    background: #ffb400;
+}
+
+.pay-features {
+    list-style: none;
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+
+.pay-features li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.price-box {
+    text-align: right;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+/* Sumar Factură */
+.invoice-summary {
+    background: #252525;
+    border: 1px solid #333;
+    border-radius: 16px;
+    padding: 25px;
+}
+
+.invoice-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #333;
+    font-size: 15px;
+    color: #ccc;
+}
+
+.invoice-row.total {
+    border-bottom: none;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    margin-top: 15px;
+}
+
+.discount-text {
+    color: #00b341;
+    font-weight: bold;
+}
+
+/* Modal Masini */
+.modal{
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.95);
+    z-index: 9999;
+    padding: 40px 8%;
+    overflow-y: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #222;
+    padding-bottom: 20px;
+}
+
+.modal h2 { font-size: 32px; }
+
+.cars{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.car{
+    background: #1c1c1c;
+    border-radius: 15px;
+    padding: 25px;
+    border: 1px solid #222;
+    transition: .3s;
+}
+
+.car:hover {
+    transform: translateY(-5px);
+    border-color: #ffb400;
+}
+
+.car h3 { font-size: 22px; margin-bottom: 10px; }
+.car p { font-size: 20px; color: #ffb400; font-weight: bold; margin-bottom: 15px; }
+
+footer{
+    padding: 40px;
+    text-align: center;
+    background: black;
+    color: #aaa;
+    border-top: 1px solid #111;
+    margin-top: 40px;
+}
+
+@media(max-width:768px){
+    .hero h1{ font-size: 36px; }
+    nav{ display: none; }
+    .row, .payment-layout { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="logo"><a href="index.html">RENT A CAR GALAȚI</a></div>
+<nav>
+<a href="index.html">Acasă</a>
+<a href="#">Flotă</a>
+<a href="#">Despre</a>
+<a href="contact.html">Contact</a>
+<a class="cta-btn" href="booking.html">Rezervă acum</a>
+</nav>
+</header>
+
+<section class="hero">
+    <h1>Rezervare mașină</h1>
+</section>
+
+<div class="container">
+    <div class="card">
+        <div id="step-1-content">
+            <div class="form-group-booking">
+                <label for="address">Locație preluare mașină (Apasă pe hartă pentru fixare exactă)</label>
+                <input type="text" id="address" placeholder="Selectează un punct de pe hartă sau scrie adresa">
+            </div>
+            
+            <div id="map"></div>
+
+            <div class="row">
+                <div class="form-group-booking">
+                    <label for="pickup">Data & Ora Preluării</label>
+                    <input type="text" id="pickup" placeholder="Selectează data preluării">
+                </div>
+                <div class="form-group-booking">
+                    <label for="dropoff">Data & Ora Predării</label>
+                    <input type="text" id="dropoff" placeholder="Selectează data predării">
+                </div>
+            </div>
+
+            <label class="checkbox-container">
+                <input type="checkbox" id="license"> 
+                Confirmez că am permis de conducere valabil de minimum 1 an de zile.
+            </label>
+            
+            <button class="cta-btn" style="width: 100%;" onclick="openModal()">Alege mașina disponibilă</button>
+        </div>
+
+        <div id="checkout-section">
+            <div class="selected-car-badge" id="selected-car-title">Masina selectată: Nicio mașină</div>
+            
+            <div class="tabs-container">
+                <button class="tab-btn active" onclick="switchTab('date-personale')">1. Date Personale</button>
+                <button class="tab-btn" onclick="switchTab('plata-finalizare')">2. Metodă Plată & Finalizare</button>
+            </div>
+
+            <div id="date-personale" class="tab-panel active">
+                <div class="row">
+                    <div class="form-group-booking">
+                        <label>Nume complet</label>
+                        <input type="text" placeholder="Ex: Popescu Andrei">
+                    </div>
+                    <div class="form-group-booking">
+                        <label>Număr Telefon</label>
+                        <input type="text" placeholder="Ex: 07xx xxx xxx">
+                    </div>
+                </div>
+                <div class="form-group-booking">
+                    <label>Adresă de Email</label>
+                    <input type="email" placeholder="Ex: andrei@gmail.com">
+                </div>
+                <button class="cta-btn" style="width: 100%; margin-top: 15px;" onclick="switchTab('plata-finalizare')">Mergi la plată</button>
+            </div>
+
+            <div id="plata-finalizare" class="tab-panel">
+                <div class="payment-layout">
+                    
+                    <div class="payment-options">
+                        <div class="pay-card offline selected" onclick="selectPaymentCard(this, 'offline')">
+                            <div class="card-title-area">
+                                <h3>Plătește la preluare</h3>
+                                <div class="radio-circle"></div>
+                            </div>
+                            <p style="font-size: 13px; color: #666; margin-bottom: 15px;">Plătești direct la ghișeu când ridici mașina.</p>
+                            <ul class="pay-features">
+                                <li>✔ Plată cu card sau cash</li>
+                                <li>✔ Confirmare în 24h</li>
+                            </ul>
+                            <div class="price-box" id="offline-price-display">0 EUR</div>
+                        </div>
+
+                        <div class="pay-card online" onclick="selectPaymentCard(this, 'online')">
+                            <div class="badge-save">Economisești 10%</div>
+                            <div class="card-body">
+                                <div class="card-title-area">
+                                    <h3>Plătește acum online</h3>
+                                    <div class="radio-circle"></div>
+                                </div>
+                                <p style="font-size: 13px; color: #bbb; margin-bottom: 15px;">Plătește securizat acum și economisești instant.</p>
+                                <ul class="pay-features">
+                                    <li>✔ Economisești <span id="online-saved-amount">0</span> EUR</li>
+                                    <li>✔ Confirmare instantă</li>
+                                    <li>✔ Clasă garantată</li>
+                                    <li>✔ Plată securizată</li>
+                                </ul>
+                                <div class="price-box" id="online-price-display">0 EUR</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="invoice-summary">
+                        <h3 style="margin-bottom: 15px; border-bottom: 1px solid #333; padding-bottom: 10px;">Sumar Rezervare</h3>
+                        <div class="invoice-row">
+                            <span>Închiriere auto</span>
+                            <span id="summary-base-price">0.00 EUR</span>
+                        </div>
+                        <div class="invoice-row">
+                            <span>Protecție Standard</span>
+                            <span>0.00 EUR</span>
+                        </div>
+                        <div class="invoice-row" id="summary-discount-row" style="display: none;">
+                            <span>Reducere plată online</span>
+                            <span class="discount-text" id="summary-discount-val">-0.00 EUR</span>
+                        </div>
+                        <div class="invoice-row total">
+                            <span>TOTAL</span>
+                            <span id="summary-total-price">0.00 EUR</span>
+                        </div>
+                        <button class="cta-btn" style="width: 100%; margin-top: 25px; background: #00b341; color: white;" onclick="finalizeReservation()">PLĂTEȘTE ACUM</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="modal" id="modal">
+    <div class="modal-header">
+        <h2>Mașini disponibile în Galați</h2>
+        <button class="cta-btn secondary" onclick="closeModal()">Închide</button>
+    </div>
+    <div class="cars">
+        <div class="car">
+            <h3>Skoda Rapid</h3>
+            <p>35€ / zi</p>
+            <button class="cta-btn" style="padding: 8px 16px; font-size: 14px;" onclick="selectCar('Skoda Rapid', 35)">Selectează</button>
+        </div>
+        <div class="car">
+            <h3>Opel Astra K Wagon</h3>
+            <p>45€ / zi</p>
+            <button class="cta-btn" style="padding: 8px 16px; font-size: 14px;" onclick="selectCar('Opel Astra K Wagon', 45)">Selectează</button>
+        </div>
+        <div class="car">
+            <h3>Peugeot 308</h3>
+            <p>50€ / zi</p>
+            <button class="cta-btn" style="padding: 8px 16px; font-size: 14px;" onclick="selectCar('Peugeot 308', 50)">Selectează</button>
+        </div>
+    </div>
+</div>
+
+<footer>Rent a Car Galați © 2026</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/confirmDate/confirmDate.js"></script>
+
+<script>
+// Date globale rezervare
+let selectedCar = { name: '', pricePerDay: 0 };
+let currentPaymentMethod = 'offline';
+
+// Inițializare selectoare date Flatpickr
+flatpickr("#pickup", {
+    enableTime: true,
+    time_24hr: true,
+    dateFormat: "d.m.Y H:i",
+    plugins: [new confirmDatePlugin({confirmText: "Confirmă"})]
+});
+
+flatpickr("#dropoff", {
+    enableTime: true,
+    time_24hr: true,
+    dateFormat: "d.m.Y H:i",
+    plugins: [new confirmDatePlugin({confirmText: "Confirmă"})]
+});
+
+// Inițializare Hartă Leaflet fixată implicit pe str. Brăilei
+let map = L.map('map').setView([45.4353, 28.0079], 13);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+let marker = L.marker([45.4353, 28.0079]).addTo(map);
+
+map.on('click', e => {
+    marker.setLatLng(e.latlng);
+    document.getElementById('address').value = e.latlng.lat.toFixed(5) + ", " + e.latlng.lng.toFixed(5);
+});
+
+function openModal(){
+    const pickup = document.getElementById('pickup').value;
+    const dropoff = document.getElementById('dropoff').value;
+    const license = document.getElementById('license').checked;
+
+    if(!pickup || !dropoff || !license){
+        alert("Te rugăm să completezi datele de preluare/predare și să bifezi deținerea permisului auto!");
+        return;
+    }
+    document.getElementById('modal').style.display = "block";
+}
+
+function closeModal(){
+    document.getElementById('modal').style.display = "none";
+}
+
+function selectCar(name, pricePerDay) {
+    selectedCar.name = name;
+    selectedCar.pricePerDay = pricePerDay;
+    
+    closeModal();
+    
+    // Ascunde formularul inițial, afișează panoul de Checkout
+    document.getElementById('step-1-content').style.display = "none";
+    document.getElementById('checkout-section').style.display = "block";
+    document.getElementById('selected-car-title').innerText = "Model selectat: " + name + " (" + pricePerDay + "€ / zi)";
+    
+    calculatePrices();
+}
+
+function switchTab(tabId) {
+    document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    
+    document.getElementById(tabId).classList.add('active');
+    
+    // Activează stilul pe butonul corespunzător
+    const currentBtnIndex = tabId === 'date-personale' ? 0 : 1;
+    document.querySelectorAll('.tab-btn')[currentBtnIndex].classList.add('active');
+}
+
+function selectPaymentCard(element, type) {
+    document.querySelectorAll('.pay-card').forEach(card => card.classList.remove('selected'));
+    element.classList.add('selected');
+    currentPaymentMethod = type;
+    calculatePrices();
+}
+
+function calculatePrices() {
+    // Calcul estimativ fixat pe 4 zile (se poate extinde dinamic ulterior prin diferența de timestamp-uri)
+    let zile = 4; 
+    let pretBaza = selectedCar.pricePerDay * zile;
+    let reducere = currentPaymentMethod === 'online' ? pretBaza * 0.10 : 0;
+    let total = pretBaza - reducere;
+
+    // Actualizare interfață elemente plată
+    document.getElementById('offline-price-display').innerText = pretBaza.toFixed(2) + " EUR";
+    document.getElementById('online-price-display').innerText = (pretBaza * 0.9).toFixed(2) + " EUR";
+    document.getElementById('online-saved-amount').innerText = (pretBaza * 0.1).toFixed(2);
+
+    // Actualizare Factură dreapta
+    document.getElementById('summary-base-price').innerText = pretBaza.toFixed(2) + " EUR";
+    
+    const discountRow = document.getElementById('summary-discount-row');
+    if(currentPaymentMethod === 'online') {
+        discountRow.style.display = 'flex';
+        document.getElementById('summary-discount-val').innerText = "-" + reducere.toFixed(2) + " EUR";
+    } else {
+        discountRow.style.display = 'none';
+    }
+    
+    document.getElementById('summary-total-price').innerText = total.toFixed(2) + " EUR";
+}
+
+function finalizeReservation() {
+    alert("Rezervarea pentru mașina " + selectedCar.name + " a fost procesată cu succes! Te contactăm telefonic pentru confirmarea livrării.");
+}
+</script>
+
+</body>
+</html>
