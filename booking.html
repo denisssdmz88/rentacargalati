@@ -796,8 +796,7 @@ footer{
 <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/confirmDate/confirmDate.js"></script>
 
 <script>
-const SUPABASE_URL = "https://jmjydnpgigrorfxhmtgh.supabase.co/rest/v1/rezervari";
-const SUPABASE_KEY = "sb_publishable_pbxILSO05mcbEDo7zaUgLg_BOmQT2Ve";
+const API_URL = "https://complex-stejarul.ro/salveaza_rezervare.php";
 
 let selectedCarGlobal = "";
 let selectedCarPricePerDay = 0;
@@ -1035,20 +1034,19 @@ async function handleFinalSubmit(event) {
         payload.cnp = null;
     }
 
-    try {
-        const response = await fetch(SUPABASE_URL, {
+   try {
+        const response = await fetch(API_URL, {
             method: "POST",
             headers: {
-                "apikey": SUPABASE_KEY,
-                "Authorization": `Bearer ${SUPABASE_KEY}`,
-                "Content-Type": "application/json",
-                "Prefer": "return=minimal"
+                "Content-Type": "application/json"
             },
             body: JSON.stringify(payload)
         });
 
-        if (!response.ok) {
-            throw new Error("Eroare la comunicarea cu serverul.");
+        const result = await response.json();
+
+        if (result.status !== "success") {
+            throw new Error(result.message || "Eroare la procesarea pe server.");
         }
 
         if (selectedPaymentType === 'online') {
@@ -1060,7 +1058,6 @@ async function handleFinalSubmit(event) {
     } catch (error) {
         showStatusModal("Eroare", "A apărut o problemă la salvarea rezervării: " + error.message, true);
     }
-}
 </script>
 </body>
 </html>
