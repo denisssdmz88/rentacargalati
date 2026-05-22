@@ -1,13 +1,11 @@
-
 <!DOCTYPE html>
 <html lang="ro">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Acasă - Rent a Car Galați</title>
+<title>Acasă - Optimum Partnership | Închirieri Auto Galați</title>
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-  
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
@@ -33,11 +31,17 @@ align-items:center;
 z-index:1000;
 background:rgba(0,0,0,0.35);
 backdrop-filter:blur(8px);
+border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
 .logo{
 font-size:24px;
 font-weight:bold;
+letter-spacing:0.5px;
+}
+
+.logo span {
+color:#ffb400;
 }
 
 nav a{
@@ -58,6 +62,15 @@ border-radius:30px;
 color:black;
 font-weight:bold;
 text-decoration:none;
+display:inline-block;
+transition:.3s;
+border:none;
+cursor:pointer;
+}
+
+.cta-btn:hover{
+background:#e09e00;
+transform:translateY(-2px);
 }
 
 .hero{
@@ -79,6 +92,7 @@ max-width:650px;
 .hero h1{
 font-size:65px;
 margin-bottom:20px;
+line-height:1.2;
 }
 
 .hero p{
@@ -98,6 +112,11 @@ border:2px solid white;
 color:white;
 }
 
+.secondary:hover{
+background:white;
+color:black;
+}
+
 .section{
 padding:100px 8%;
 }
@@ -105,6 +124,18 @@ padding:100px 8%;
 .title{
 font-size:36px;
 margin-bottom:50px;
+position:relative;
+}
+
+.title::after {
+content: '';
+position: absolute;
+bottom: -10px;
+left: 0;
+width: 60px;
+height: 4px;
+background: #ffb400;
+border-radius: 2px;
 }
 
 .features{
@@ -118,10 +149,21 @@ background:#1c1c1c;
 padding:30px;
 border-radius:15px;
 transition:.3s;
+border:1px solid #222;
 }
 
 .feature:hover{
 transform:translateY(-10px);
+border-color:#ffb400;
+}
+
+.feature h3 {
+margin-bottom:10px;
+}
+
+.feature p {
+color:#aaa;
+font-size:15px;
 }
 
 .cars{
@@ -134,6 +176,13 @@ gap:30px;
 overflow:hidden;
 background:#1c1c1c;
 border-radius:15px;
+border:1px solid #222;
+transition:.3s;
+}
+
+.car:hover {
+transform: translateY(-5px);
+border-color: #ffb400;
 }
 
 .car img{
@@ -143,13 +192,30 @@ object-fit:cover;
 }
 
 .car-content{
-padding:20px;
+padding:25px;
+}
+
+.car-specs {
+display: flex;
+gap: 15px;
+margin: 15px 0;
+font-size: 14px;
+color: #aaa;
+border-bottom: 1px solid #222;
+padding-bottom: 15px;
 }
 
 .price{
-font-size:22px;
+font-size:24px;
 color:#ffb400;
-margin:15px 0;
+font-weight:bold;
+margin-bottom:20px;
+}
+
+.price span {
+font-size:14px;
+color:#aaa;
+font-weight:normal;
 }
 
 .big-cta{
@@ -165,11 +231,49 @@ font-size:42px;
 margin-bottom:15px;
 }
 
+.big-cta p {
+font-size:18px;
+margin-bottom:25px;
+}
+
 footer{
-padding:30px;
-text-align:center;
+padding:60px 8% 40px 8%;
 background:black;
 color:#aaa;
+font-size:14px;
+border-top:1px solid #111;
+}
+
+.footer-content {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+gap: 40px;
+text-align: left;
+max-width: 1400px;
+margin: 0 auto 40px auto;
+}
+
+.footer-section h4 {
+color: white;
+margin-bottom: 15px;
+font-size: 16px;
+}
+
+.footer-section p {
+margin-bottom: 8px;
+line-height: 1.6;
+}
+
+.footer-section a {
+color: #ffb400;
+text-decoration: none;
+}
+
+.footer-bottom {
+text-align: center;
+padding-top: 30px;
+border-top: 1px solid #222;
+color: #666;
 }
 
 @media(max-width:768px){
@@ -179,13 +283,17 @@ font-size:42px;
 nav{
 display:none;
 }
+.footer-content {
+grid-template-columns: 1fr;
+text-align: center;
+}
 }
 </style>
 </head>
 <body>
 
 <header>
-<div class="logo">RENT A CAR GALAȚI</div>
+<div class="logo">OPTIMUM <span>PARTNERSHIP</span></div>
 
 <nav>
 <a href="#">Acasă</a>
@@ -202,13 +310,12 @@ display:none;
 <h1>Închirieri auto rapide în Galați</h1>
 
 <p>
-Mașini curate, prețuri transparente și rezervări rapide.
-Adaugă ulterior textele, flota și detaliile companiei.
+Mașini impecabile, prețuri transparente și servicii de încredere oferite de Optimum Partnership. Alege modelul potrivit pentru drumurile tale.
 </p>
 
 <div class="buttons">
 <a href="#" class="cta-btn">Vezi flota</a>
-<a href="#" class="cta-btn secondary">Contactează-ne</a>
+<a href="contact.html" class="cta-btn secondary">Contactează-ne</a>
 </div>
 
 </div>
@@ -221,56 +328,85 @@ Adaugă ulterior textele, flota și detaliile companiei.
 
 <div class="feature">
 <h3>Predare rapidă</h3>
-<p>Livrare și preluare rapidă.</p>
+<p>Livrare și preluare rapidă direct în Galați, fără timpi pierduți.</p>
 </div>
 
 <div class="feature">
 <h3>Asistență 24/7</h3>
-<p>Suport disponibil permanent.</p>
+<p>Suport tehnic și telefonic disponibil permanent pentru siguranța ta.</p>
 </div>
 
 <div class="feature">
 <h3>Prețuri transparente</h3>
-<p>Fără costuri ascunse.</p>
+<p>Fără costuri ascunse sau taxe surpriză la finalul contractului.</p>
 </div>
 
 <div class="feature">
 <h3>Flotă modernă</h3>
-<p>Mașini verificate și întreținute.</p>
+<p>Mașini verificate la zi, curate și complet echipate.</p>
 </div>
 
 </div>
 </section>
 
 <section class="section">
-<h2 class="title">Mașini populare</h2>
+<h2 class="title">Flota Noastră Auto</h2>
 
 <div class="cars">
 
 <div class="car">
-<img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?q=80&w=1200">
+<img src="peugeot.png" alt="Peugeot 308">
 <div class="car-content">
-<h3>XXXXXXX</h3>
-<div class="price">€45 / zi</div>
-<a href="#" class="cta-btn">Detalii</a>
+<h3>Peugeot 308</h3>
+<div class="car-specs">
+<span>🕹️ Manuală (6+1)</span>
+<span>⛽ 1.6 HDI</span>
+<span>📉 4.5 L/100km</span>
+</div>
+<div class="price">€35 <span>/ zi</span></div>
+<a href="peugeot-308.html" class="cta-btn" style="width: 100%; text-align: center;">Detalii & Poze</a>
 </div>
 </div>
 
 <div class="car">
-<img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1200">
+<img src="skoda_fata.png" alt="Skoda Rapid">
 <div class="car-content">
-<h3>XXXXXXX</h3>
-<div class="price">€50 / zi</div>
-<a href="#" class="cta-btn">Detalii</a>
+<h3>Skoda Rapid</h3>
+<div class="car-specs">
+<span>🕹️ Manuală (5+1)</span>
+<span>⛽ 1.6 TDI</span>
+<span>📉 4.8 L/100km</span>
+</div>
+<div class="price">€40 <span>/ zi</span></div>
+<a href="skoda-rapid.html" class="cta-btn" style="width: 100%; text-align: center;">Detalii & Poze</a>
 </div>
 </div>
 
 <div class="car">
-<img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1200">
+<img src="opel_fata.png" alt="Opel Astra">
 <div class="car-content">
-<h3>XXXXXXX</h3>
-<div class="price">€35 / zi</div>
-<a href="#" class="cta-btn">Detalii</a>
+<h3>Opel Astra</h3>
+<div class="car-specs">
+<span>🕹️ Manuală (6+1)</span>
+<span>⛽ 1.5 CDTI</span>
+<span>📉 4.6 L/100km</span>
+</div>
+<div class="price">€45 <span>/ zi</span></div>
+<a href="opel-astra.html" class="cta-btn" style="width: 100%; text-align: center;">Detalii & Poze</a>
+</div>
+</div>
+
+<div class="car" style="border-color: rgba(255,180,0,0.2);">
+<img src="ford.png" alt="Ford Transit Frigorific">
+<div class="car-content">
+<h3>Ford Transit Frigorific <span style="font-size: 12px; background: #ffb400; color: black; padding: 2px 8px; border-radius: 10px; margin-left: 5px; font-weight: bold;">La cerere</span></h3>
+<div class="car-specs">
+<span>🕹️ Manuală</span>
+<span>❄️ Autoutilitară Frigo</span>
+<span>📦 Spațiu Marfă</span>
+</div>
+<div class="price">Preț la cerere</div>
+<a href="contact.html" class="cta-btn secondary" style="width: 100%; text-align: center;">Solicită Ofertă</a>
 </div>
 </div>
 
@@ -281,17 +417,34 @@ Adaugă ulterior textele, flota și detaliile companiei.
 <div class="big-cta">
 
 <h2>Ai nevoie de o mașină astăzi?</h2>
+<p>Rezervă online în mai puțin de 2 minute sau contactează-ne direct.</p>
 
-<p>Rezervă în mai puțin de 2 minute.</p>
-<br><br>
-
-<a href="booking.html" class="cta-btn">Rezervă acum</a>
+<a href="booking.html" class="cta-btn" style="background: black; color: white;">Rezervă acum</a>
 
 </div>
 </section>
 
 <footer>
-Rent a Car Galați © 2026
+<div class="footer-content">
+<div class="footer-section">
+<h4>Optimum Partnership</h4>
+<p>Servicii premium de închirieri auto în Galați. Flexibilitate, corectitudine și mașini adaptate nevoilor tale.</p>
+</div>
+<div class="footer-section">
+<h4>Informații Legale</h4>
+<p><b>CUI:</b> RO43601888</p>
+<p><b>Reg. Com:</b> J2021000125175</p>
+<p><b>Sediu:</b> Str. Navelor nr. 2, Galați</p>
+</div>
+<div class="footer-section">
+<h4>Contact Direct</h4>
+<p><b>Telefon:</b> <a href="tel:+40744700230">0744 700 230</a></p>
+<p><b>Email:</b> <a href="mailto:optimumhoreca@yahoo.com">optimumhoreca@yahoo.com</a></p>
+</div>
+</div>
+<div class="footer-bottom">
+Optimum Partnership © 2026. Toate drepturile rezervate.
+</div>
 </footer>
 
 </body>
