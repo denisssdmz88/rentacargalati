@@ -511,7 +511,16 @@ footer{
 </head>
 <body>
 
-<div id="header-placeholder"></div>
+<header>
+<div class="logo"><a href="index.html">OPTIMUM <span>PARTNERSHIP</span></a></div>
+<nav>
+<a href="index.html">Acasă</a>
+<a href="flota.html">Flotă</a>
+<a href="despre.html">Despre</a>
+<a href="contact.html">Contact</a>
+<a class="cta-btn" href="booking.html">Rezervă acum</a>
+</nav>
+</header>
 
 <section class="hero">
     <h1>Rezervare mașină</h1>
@@ -1069,21 +1078,6 @@ try {
         console.error("Eroare:", error);
         showStatusModal("Eroare", "Detaliu: " + error.message, true);
     }
-}
-</script>
-    <script>
-fetch("header.html")
-.then(response=>response.text())
-.then(data=>{
-document.getElementById(
-"header-placeholder"
-).innerHTML=data;
-});
-
-function toggleMenu(){
-document
-.getElementById("mobileMenu")
-.classList.toggle("active");
 }
 </script>
 </body>
