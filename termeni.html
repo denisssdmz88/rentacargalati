@@ -186,24 +186,52 @@
         }
 
         /* Responsivitate pentru mobil */
-        @media (max-width: 768px) {
-            .site-header {
-                padding: 15px 20px;
-                flex-direction: column;
-                gap: 15px;
-            }
-            .nav-links {
-                gap: 15px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            .terms-card {
-                padding: 20px;
-            }
-            h1 {
-                font-size: 1.7rem;
-            }
-        }
+       .menu-toggle{
+display:none;
+font-size:32px;
+cursor:pointer;
+color:white;
+user-select:none;
+}
+
+@media(max-width:768px){
+
+.menu-toggle{
+display:block;
+}
+
+nav{
+display:none;
+position:absolute;
+top:90px;
+left:0;
+width:100%;
+background:#111;
+padding:25px;
+flex-direction:column;
+border-top:1px solid #222;
+gap:15px;
+}
+
+nav.active{
+display:flex !important;
+flex-direction:column;
+position:absolute;
+top:90px;
+left:0;
+width:100%;
+background:#111;
+padding:25px;
+border-top:1px solid #222;
+z-index:9999;
+}
+
+nav a{
+margin:0;
+padding:12px 0;
+}
+
+}
     </style>
 </head>
 <body>
@@ -217,6 +245,7 @@
             <li><a href="contact.html">Contact</a></li>
             <li><a href="booking.html" class="btn-nav">Rezervă acum</a></li>
         </ul>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
     </header>
 
     <div class="terms-container">
@@ -258,6 +287,18 @@
             </div>
         </div>
     </div>
+<script>
+function toggleMenu(){
 
+const menu=document.getElementById("mobileMenu");
+
+if(menu.classList.contains("active")){
+menu.classList.remove("active");
+}else{
+menu.classList.add("active");
+}
+
+}
+</script>
 </body>
 </html>
