@@ -306,7 +306,16 @@ gap:15px;
 }
 
 nav.active{
-display:flex;
+display:flex !important;
+flex-direction:column;
+position:absolute;
+top:90px;
+left:0;
+width:100%;
+background:#111;
+padding:25px;
+border-top:1px solid #222;
+z-index:9999;
 }
 
 nav a{
@@ -327,7 +336,7 @@ text-align:center;
 <header>
 <div class="logo"><a href="index.html" style="text-decoration: none; color: white;">OPTIMUM <span style="color: #ffb400;">PARTNERSHIP</span></a></div>
 
-<nav>
+<nav id="mobileMenu">
 <a href="index.html">Acasă</a>
 <a href="flota.html">Flotă</a>
 <a href="despre.html">Despre</a>
@@ -481,9 +490,15 @@ Optimum Partnership © 2026. Toate drepturile rezervate.
 </footer>
 <script>
 function toggleMenu(){
-document
-.getElementById("mobileMenu")
-.classList.toggle("active");
+
+const menu=document.getElementById("mobileMenu");
+
+if(menu.classList.contains("active")){
+menu.classList.remove("active");
+}else{
+menu.classList.add("active");
+}
+
 }
 </script>
 </body>
