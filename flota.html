@@ -213,17 +213,51 @@ border-top: 1px solid #222;
 color: #666;
 }
 
-@media(max-width:768px){
-.page-header h1 {
-font-size: 32px;
+.menu-toggle{
+display:none;
+font-size:32px;
+cursor:pointer;
+color:white;
+user-select:none;
 }
+
+@media(max-width:768px){
+
+.menu-toggle{
+display:block;
+}
+
 nav{
 display:none;
+position:absolute;
+top:90px;
+left:0;
+width:100%;
+background:#111;
+padding:25px;
+flex-direction:column;
+border-top:1px solid #222;
+gap:15px;
 }
-.footer-content {
-grid-template-columns: 1fr;
-text-align: center;
+
+nav.active{
+display:flex !important;
+flex-direction:column;
+position:absolute;
+top:90px;
+left:0;
+width:100%;
+background:#111;
+padding:25px;
+border-top:1px solid #222;
+z-index:9999;
 }
+
+nav a{
+margin:0;
+padding:12px 0;
+}
+
 }
 </style>
 </head>
@@ -239,6 +273,7 @@ text-align: center;
 <a href="contact.html">Contact</a>
 <a href="booking.html" class="cta-btn">Rezervă acum</a>
 </nav>
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 </header>
 
 <div class="page-header">
@@ -346,6 +381,18 @@ text-align: center;
 Optimum Partnership © 2026. Toate drepturile rezervate.
 </div>
 </footer>
+<script>
+function toggleMenu(){
 
+const menu=document.getElementById("mobileMenu");
+
+if(menu.classList.contains("active")){
+menu.classList.remove("active");
+}else{
+menu.classList.add("active");
+}
+
+}
+</script>
 </body>
 </html>
